@@ -34,6 +34,21 @@ export const styles = StyleSheet.create({ //ESTILOS: Creo esta constante con la 
         color: "white", 
     },
 
+    modalContainerContent: {
+        width: "80%",
+        height: "40%",
+        backgroundColor: "white",
+        borderRadius: 4,
+        elevation: 5, //eleva la card
+        justifyContent: "center",
+        marginLeft: 40, //LO CORRO DESDE LA IZQUIERDA.
+        marginTop: 150,
+        shadowOffset: {width: 1, height: 1},
+        shadowColor: "black",
+        shadowOpacity: 0.2,
+
+    },
+
     modalTitle:{
         fontSize:14,
         color:"red",

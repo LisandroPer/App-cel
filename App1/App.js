@@ -79,30 +79,31 @@ const App = () => {
           keyExtractor={item => item.id.toString()}
         />
       </View>
-
-      <Modal 
-        animationType='slide'
-        transparent={false}
-        visible={modalVisible}
-        onRequestClose={()=>{
-       
-        }}
-      >
-        <View style={styles.modalTitle}>
-          <Text>Descripción</Text>  
-        </View>  
-        <View style={styles.modalContent}>
-          <Text>Do you want to delete this item?</Text>
-          <Text style={styles.modalContentText}>{selectedItem.value}</Text>
-        </View>
-        <View style={styles.modalButton}>
-          <Button 
-             title='Sí'
-             color="red"
-             onPress={()=> handelDeleteItem(selectedItem.id)}
-          />
-        </View>
-      </Modal>
+      
+      <View> 
+        <Modal 
+          animationType='slide'
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={()=>{
+        
+          }}
+        >
+            <View style={styles.modalContainerContent}> 
+                  <View style={styles.modalContent}>
+                      <Text>Do you want to delete this item?</Text>
+                      <Text style={styles.modalContentText}>{selectedItem.value}</Text>
+                  </View>
+                  <View style={styles.modalButton}>
+                      <Button 
+                        title='Sí'
+                        color="red"
+                        onPress={()=> handelDeleteItem(selectedItem.id)}
+                      />
+                  </View>
+            </View>
+        </Modal>
+      </View>
 
       <View>
         <Button 

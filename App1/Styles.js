@@ -28,8 +28,33 @@ export const styles = StyleSheet.create({ //ESTILOS: Creo esta constante con la 
         margin: 22,
         borderRadius: 10
     },
+
     textList: {
         fontSize: 18,
         color: "white", 
+    },
+
+    modalTitle:{
+        fontSize:14,
+        color:"red",
+        marginBottom: 10,
+        padding: 25
+    },
+
+    modalContent:{
+        padding: 25,
+    },
+
+    modalButton:{
+       marginTop: 10,
+       marginBottom: 10,
+       padding: 50
+    },
+    
+    modalContentText:{
+        fontSize: 18,
+        color: "red",
+        fontWeight:"bold",
+        marginVertical: 15
     }
   })

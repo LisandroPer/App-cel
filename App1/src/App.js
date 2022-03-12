@@ -7,8 +7,11 @@ import { //IMPORTANTEEEEEEEEE: todos los modulos que usemos deben ser importados
   TextInput,//van los inputs
   FlatList,//para renderizar las lsitas
   TouchableOpacity, //para poder clikear los elementos de la lsita. 
-  Modal
+  Modal,
+  SafeAreaView  //sirve para que las camaras u otras cosas no tapen la App. Sirve como contenedor principal.
 } from 'react-native';
+import Input from './components/atoms/inputs/Index';
+import CustomModal from './components/moleculs/Custom-modal/Index';
 
 
 
@@ -41,17 +44,16 @@ const App = () => {
   }
 
   return (
-    <View style={styles.container /*LLAMO A LA CONST STYLE Y DE AHÍ SELECCIONO EL CONTAINER YA QUE SE TRATA DE LOS ESTILOS DEL CONSTAINER*/}> 
+    <SafeAreaView style={styles.container /*LLAMO A LA CONST STYLE Y DE AHÍ SELECCIONO EL CONTAINER YA QUE SE TRATA DE LOS ESTILOS DEL CONSTAINER*/}> 
      <View style={styles.containerInput /*LLAMO A LOS ESTILOS DEL CONTAINER INPUTS*/}>
-      <TextInput
-            placeholder='Lista de contactos' //visuaqliza donde se debe escribir.
-            placeholderTextColor="blue" //será el color del placeholder
-            autoComplete='off' //Para que no se autocomplete lo que escribo
-            autoCorrect={false} //Que no funcione el autocorrector
-            autoFocus={true} //Sirve para que se enfoque al principio el input.
-            style={styles.textInput} /*Llamo a los estilos del textinput*/
-            onChangeText={handelOnChangeTextInput} //Llamo a la función que adquiere el valor del imput.
-            value={text}//Es el valor del Estado. TOMARÁ EL VALOR SETEADO EN LA FUNCIÓN handelOnchangeTextInput.
+      <Input
+         placeholder='Escribir'
+         autoCorrect={false}
+         autoFocus={true}
+         placeholderTextColor="#0000FF"
+         style={styles.TextInput}
+         value={text}
+         handelOnChangeText={handelOnChangeTextInput}
       />
       <Button 
          title='Add' //ACA va el nombre del btn.
@@ -81,28 +83,13 @@ const App = () => {
       </View>
       
       <View> 
-        <Modal 
-          animationType='slide'
-          transparent={true}
+         <CustomModal 
           visible={modalVisible}
-          onRequestClose={()=>{
-        
-          }}
-        >
-            <View style={styles.modalContainerContent}> 
-                  <View style={styles.modalContent}>
-                      <Text>Do you want to delete this item?</Text>
-                      <Text style={styles.modalContentText}>{selectedItem.value}</Text>
-                  </View>
-                  <View style={styles.modalButton}>
-                      <Button 
-                        title='Sí'
-                        color="red"
-                        onPress={()=> handelDeleteItem(selectedItem.id)}
-                      />
-                  </View>
-            </View>
-        </Modal>
+          description="¿Seguro que quiere borrar este item?"
+          selectedItem={selectedItem}
+          buttonText="Yes"
+          onHandleDeleteItem={handelDeleteItem}
+         />
       </View>
 
       <View>
@@ -112,7 +99,7 @@ const App = () => {
         />
       </View>
  
-    </View>
+    </SafeAreaView>
   );
 };
 
